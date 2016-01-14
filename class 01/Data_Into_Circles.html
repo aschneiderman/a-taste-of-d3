@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css">
+<script src="http://d3js.org/d3.v3.min.js"></script> 
+<title>D3-snacks: </title>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+<header class="inner">
+<a id="forkme_banner" href="https://github.com/aschneiderman/d3-snacks">View on GitHub</a>
+<h1 id="project_title">D3-snacks</h1>
+<h2 id="project_tagline">Little snacks of D3 I&#39;m using as a cookbook as I learn  to cook with D3</h2>
+</header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<h2>Turning Data into Circles</h2>
+
+<h4>Round 1: turn data into differently sized black circles in a row</h4>
+
+<p id="area1"></p>
+<script type="text/javascript">
+	
+	//Width and height
+	var w = 500;
+	var h = 50;
+	
+	//Data
+	var dataset = [ 5, 10, 15, 20, 25, 5, 20, 10, 20, 5 ];
+	
+	//Create SVG element
+	var svg = d3.select("#area1")
+				.append("svg")
+				.attr("width", 500)
+				.attr("height", 50);
+				
+				
+
+	var circles = svg.selectAll("circle")
+	    .data(dataset)
+	    .enter()
+	    .append("circle");
+
+	circles.attr("cx", function(d, i) {
+				return (i * 50) + 25;
+			})
+		   .attr("cy", h/2)
+		   .attr("r", function(d) {
+				return d;
+		   });
+
+</script>
+<br/><br/><br/>
+<h4>Round 2: change each circle's Y, and change the color</h4>
+
+
+<p id="area2"></p>
+
+<script type="text/javascript">
+	
+	//Width and height
+	var w = 500;
+	var h = 50;
+	var c10 = d3.scale.category10();
+	//Data
+	var dataset = [ 5, 10, 15, 20, 25, 5, 20, 10, 20 ];
+	
+	//Create SVG element
+	var svg = d3.select("#area2")
+				.append("svg")
+				.attr("width", 500)
+				.attr("height", 550);
+
+	var circles = svg.selectAll("circle")
+	    .data(dataset)
+	    .enter()
+	    .append("circle");
+
+	circles.attr("cx", function(d, i) {
+				return (i * 50) + 25;
+			})
+		   .attr("cy", function(d, i) {
+	
+				return (h/2*i) + 20;
+			})
+			.attr("fill", c10 )
+		   .attr("r", function(d) {
+				return d;
+		   });
+
+</script>
+		
+</section>
+</div>
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+<footer class="inner">
+<p class="copyright">D3-snacks maintained by <a href="https://github.com/aschneiderman">aschneiderman</a></p>
+<p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+</footer>
+</div>
+</body>
+</html>
