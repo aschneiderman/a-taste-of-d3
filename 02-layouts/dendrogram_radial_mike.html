@@ -1,0 +1,102 @@
+<DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radial Dendrogram</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>        <!-- d3 library -->
+  <style>
+  body {
+    font-family: sans-serif;
+  }
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+</style>
+</head>
+<body>
+<h3>Our version of the code, using the flare.JSON file from Mike Bostock</h3>
+<script>
+
+var produce = {
+  "name": "Produce",
+  "children": [
+    { "name": "Fruit",
+      "children": [
+        {"name": "Apple", "size": 300},
+        {"name": "Banana", "size": 200},
+        { "name": "Berries",
+          "children": [
+            {"name": "Raspberries", "size": 100},
+            {"name": "Strawberries", "size": 200},
+            {"name": "Blueberries", "size": 80}
+          ] }
+      ] },
+    { "name": "Veggies",
+      "children":  [
+        {"name": "Zucchini", "size": 52},
+        {"name": "Peas", "size": 50},
+        {"name": "Carrots", "size": 60}
+      ] }
+] };
+
+var radius = 960 / 2;
+
+var cluster = d3.layout.cluster()
+    .size([360, radius - 120]);
+
+var diagonal = d3.svg.diagonal.radial()
+    .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", radius * 2)
+    .attr("height", radius * 2)
+  .append("g")
+    .attr("transform", "translate(" + radius + "," + radius + ")");
+
+    d3.json("flare.json", function(error, produce) {
+      if (error) throw error;
+
+  var nodes = cluster.nodes(produce);
+
+  var link = svg.selectAll("path.link")
+      .data(cluster.links(nodes))
+    .enter().append("path")
+      .attr("class", "link")
+      .attr("d", diagonal);
+
+  var node = svg.selectAll("g.node")
+      .data(nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+
+  node.append("circle")
+      .attr("r", 4.5);
+
+  node.append("text")
+      .attr("dy", ".31em")
+      .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+      .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+      .text(function(d) { return d.name; });
+
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+body {
+	font-family: sans-serif;
+}
+circle {
+	fill: Purple;
+	fill-opacity: .5;
+	stroke: Gray;
+	stroke-width: 1px;
+}
+text {
+	text-anchor: middle;
+}
+
+.leaf circle {
+	fill: AntiqueWhite;
+	fill-opacity: 1;
+}
+.leaf text {
+	font-size: 20px;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>				<!-- d3 library -->
+</head>
+<body style="font-family:verdana;">
+<h1>Ms Melissa Says:</h1>
+<svg width="900" height="900" id="selected_states" class="SVG_playground">
+
+  // Picture of Melissa the cat, moved over to allow space for the text
+  <g  transform="translate(430,0)" >
+  	<path d="M332.513,46.716c0,0-19.125-44.227-31.671-46.617s-4.781,39.445-4.781,41.836l-37.055-25.102
+  		c0,0-3.586-1.798,12.546,35.267c7.172,3.586-22.118,3.586-25.102,29.883s-19.125,22.711-11.36,32.876s16.734,15.539,18.532,15.539
+  		s3.586,6.579,11.36,5.977s35.257-16.142,38.843-2.993c0,0,12.747,42.63-30.285,86.464
+  		c-43.032,43.835-91.638,138.656-82.878,211.973c0,0,3.987,36.652,5.575,45.421c0,0-41.434,7.172-34.262,41.435
+  		s91.637,11.953,100.406,9.562s61.363,1.597,48.606,21.516c-12.747,19.919,30.284,35.065,51.8-8.769c0,0,9.562,0.794,11.953-7.172
+  		c0,0,22.31,1.597,13.551-19.919c-8.77-21.516-15.941-11.159-18.332-7.966c0,0-1.893-78.488,20.368-171.723
+  		C412.589,240.969,431.724,129.795,332.513,46.716z"/>
+  </g>
+</svg>
+
+<script type="text/javascript">
+
+melissaSays = ["Your quarterly performance numbers",
+"are pretty disappointing.",
+"I've seen more thought", "and engagement",
+"from a pine nut."];
+
+var svg = d3.select("svg");
+
+var text = svg.selectAll("text")
+  .data(melissaSays)
+  .enter()
+  .append("text")
+    .attr("x",60)
+    .attr("y",340)
+    .text( function(d,i) { return d;})
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "36px")
+    .style("fill", "Black")
+    .style("opacity", 0);
+
+var timing = 2000;
+
+  text.transition()
+    .delay( function(d,i) {return i * timing})
+    .duration(timing)
+    .attr("y", function(d,i)  { return i * 55 + 100})
+    .style("fill", "red")
+    .style("opacity", 1);
+
+// var myText = svg.append("text")
+//   .attr("x",60)
+//   .attr("y",60)
+//   .text("Changing")
+//   .attr("font-family", "sans-serif")
+//   .attr("font-size", "36px")
+//   .style("fill", "green");
+//
+// myText
+//   .transition()
+//   .duration(2600)
+//   .style("fill", "Purple")
+//   .attr("x",420)
+//   .attr("y",280)
+//   .ease("bounce");
+
+</script>
+
+
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+</body>
+</html>

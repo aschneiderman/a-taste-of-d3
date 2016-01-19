@@ -1,0 +1,105 @@
+<DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Circle Packing</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>        <!-- d3 library -->
+  <style>
+  body {
+    font-family: sans-serif;
+  }
+  .node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+
+  .node {
+    font: 10px sans-serif;
+  }
+
+  .link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+  }
+  </style>
+</head>
+<body>
+<h3>Produce</h3>
+<script>
+
+// Create the data to display
+var produce = {
+  "name": "Produce",
+  "children": [
+    { "name": "Fruit",
+      "children": [
+        {"name": "Apple", "size": 300},
+        {"name": "Banana", "size": 200},
+        { "name": "Berries",
+          "children": [
+            {"name": "Raspberries", "size": 100},
+            {"name": "Strawberries", "size": 200},
+            {"name": "Blueberries", "size": 80}
+          ] }
+      ] },
+    { "name": "Veggies",
+      "children":  [
+        {"name": "Zucchini", "size": 52},
+        {"name": "Peas", "size": 50},
+        {"name": "Carrots", "size": 60}
+      ] }
+] };
+
+var width = 800, height = 500;
+
+// Create the SVG area, and indent the dendrogram so the first node's title is visible
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(80,0)");
+
+// Create a cluster layout function
+var cluster = d3.layout.cluster()
+    .size([height, width - 160]);
+
+// Use the cluster layout function to calculate the position of the nodes and lines that connect them
+var clusteredNodes = cluster.nodes(produce),
+    clusteredLinks = cluster.links(clusteredNodes);
+
+// Create the lines that connect the nodes
+var link = svg.selectAll(".link")
+    .data(clusteredLinks)
+  .enter().append("path")
+    .attr("class", "link")
+    .attr("d", d3.svg.diagonal().projection(
+        function(d) { return [d.y, d.x]; }) );
+
+// Create the groups that will contain the nodes, each of which consist of a circle and a text title
+var nodes = svg.selectAll(".node")
+  .data(clusteredNodes)
+.enter().append("g")
+  .attr("class", "node")
+  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+
+// Create a circle for each node
+nodes.append("circle")
+    .attr("r", 4.5);
+
+// Create the title for each node
+nodes.append("text")
+    .attr("dx", function(d) { return d.children ? -8 : 8; })
+    .attr("dy", 3)
+    .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+    .text(function(d) { return d.name; });
+
+</script>
+
+</body>
+</html>
+
+<!-- Based on Mike Bostock's dendrogram: http://bl.ocks.org/mbostock/4063570 -->

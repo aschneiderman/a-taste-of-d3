@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+</head>
+<body>
+<h1>A Simple Bar Chart</h1>
+<svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
+
+<script type="text/javascript">
+var sales = [
+	{ category: "shirts", sales: 200 },
+  { category: "dresses", sales: 250 },
+	{ category: "slacks", sales: 260 },
+	{ category: "mittens", sales: 290}
+];
+
+
+svg_area = d3.select("svg");
+
+svg_area.selectAll("rect")
+  .data(sales)
+  .enter()
+  .append("rect")
+    .attr("x", 90)
+    .attr("y", function(d,i)  { return i * 50 + 50;})
+    .attr("width", function(d,i) {return d.sales * 2;})
+    .attr("height", 30)
+    .style("fill", "Sienna");
+
+
+  svg_area.selectAll("text")
+    .data(sales)
+    .enter()
+    .append("text")
+      .attr("x", 15)
+      .attr("y", function(d,i)  { return i * 50 + 70;})
+      .text(function (d) { return d.category; })
+      .style("font",   "18px sans-serif")
+      .style("fill", "Navy")
+      .style("pointer-events", "none");    // If you put the mouse over one of the states, this prevents it from
+
+
+
+</script>
+</body>
+</html>

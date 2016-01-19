@@ -1,0 +1,90 @@
+<DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Circle Packing</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>        <!-- d3 library -->
+	<style>
+  body {
+	  font-family: sans-serif;
+  }
+	circle {
+	  fill: Purple;
+	  fill-opacity: .5;
+	  stroke: Gray;
+	  stroke-width: 1px;
+	}
+	text {
+		text-anchor: middle;
+	}
+
+	.leaf circle {
+	  fill: AntiqueWhite;
+	  fill-opacity: 1;
+	}
+  .leaf text {
+    font-size: 20px;
+  }
+	</style>
+</head>
+<body>
+	<h3>Produce Popularity</h3>
+  <script type="text/javascript">
+// Create the data
+var produce = {
+	name: "produce",
+	children: [
+		{ name: "Fruit",
+			children: [
+        { name: "Berries",
+        children: [
+          {name: "Raspberries", quantity: 100},
+          {name: "Strawberries", quantity: 200},
+          {name: "Blueberries", quantity: 80}
+        ] },
+				{name: "Apple", quantity: 300},
+				{name: "Banana", quantity: 200},
+			] },
+		{ name: "Veggies",
+			children:  [
+				{name: "Zucchini", quantity: 52},
+				{name: "Peas", quantity: 30},
+				{name: "Carrots", quantity: 60},
+        {name: "Onions", quantity: 70}
+			] }
+] };
+
+var diameter = 860;
+
+// Create the SVG area
+var svg = d3.select("body").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter);
+
+// Create a packed layout function and use it to do the calculations to turn produce into a packed layout
+var packedLayout = d3.layout.pack()
+    .size([diameter, diameter])
+    .value(function(d) { return d.quantity; });
+var packedNodes = packedLayout.nodes(produce);
+
+// For each item, add a group to hold the circle and the text
+var nodes = svg.selectAll("g")
+    .data(packedNodes)
+    .enter().append("g")
+    	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+    	.attr("class", function(d) { return d.children ? "node" : "leaf"; });
+
+// For each group, add a circle
+nodes.append("circle")
+    .attr("r", function(d) { return d.r; });
+
+//For each group,add a text label
+nodes.filter(function(d) { return !d.children; })
+  .append("text")
+    .text(function(d) { return d.name; });
+</script>
+
+</body>
+</html>
+
+<!-- Based on mbostock’s block #4063530 November 13, 2012  -->
