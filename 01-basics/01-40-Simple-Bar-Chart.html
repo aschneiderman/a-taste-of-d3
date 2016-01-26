@@ -5,15 +5,15 @@
   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
 </head>
 <body>
-<h1>A Simple Bar Chart</h1>
+<h1>A Simple Bar Chart: Sales</h1>
 <svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
 
 <script type="text/javascript">
 var sales = [
-	{ category: "shirts", sales: 200 },
-  { category: "dresses", sales: 250 },
-	{ category: "slacks", sales: 260 },
-	{ category: "mittens", sales: 290}
+	{ category: "shirts",  purchases: 5,  sales: 200 },
+  { category: "dresses", purchases: 2,  sales: 250 },
+	{ category: "slacks",  purchases: 10, sales: 450 },
+	{ category: "mittens", purchases: 6,  sales: 120 }
 ];
 
 
@@ -39,9 +39,12 @@ svg_area.selectAll("rect")
       .text(function (d) { return d.category; })
       .style("font",   "18px sans-serif")
       .style("fill", "Navy")
-      .style("pointer-events", "none");    // If you put the mouse over one of the states, this prevents it from
+      .style("pointer-events", "none");     // Tells the browser to treat the text as if it were a label, not text you can click on
 
 
+// Experiments you could try:
+// - Change the bar and text colors
+// - Switch the bar chart from displaying sales to displaying purchases
 
 </script>
 </body>
