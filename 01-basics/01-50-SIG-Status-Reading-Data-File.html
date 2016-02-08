@@ -5,24 +5,36 @@
   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
 </head>
 <body>
-<h1>Turning Data into Circles</h1>
+<h1>Turning a CSV File of Data into Circles</h1>
+<h2>SIG Engagement</h2>
 <svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
 
 <script type="text/javascript">
-	var myData = [ 5, 10, 15, 20, 25, 5, 20, 10, 20, 5 ];
+	// var myData = [ 5, 10, 15, 20, 25, 5, 20, 10, 20, 5 ];
 
-	d3.select("svg").selectAll("circle")
-		.data(myData)
-	  .enter()
-	  .append("circle")
-			.attr("cy", 100)
-			.attr("cx", function(d, i) { return i * 50 + 100; })
-		  .attr("r", function(d) { return d; })
-			.attr("fill", "purple" );
+  d3.csv("SIGs.csv", function(data) {
+
+    // Create the circles
+  	d3.select("svg.csv").selectAll("circle")
+  		.data(myData)
+  	  .enter()
+  	  .append("circle")
+  			.attr("cy", 100)
+  			.attr("cx", function(d, i) { return i * 50 + 100; })
+  		  .attr("r", function(d) { return d; })
+  			.attr("fill", function(d)  { return (d.engagement > 5) ? "Crimson" : "Pink"} );
+    });
+
+    // Create another version that uses if than
+    // e.g., if (d.engagement == 0) {
+  //   return "white"
+  // } else if (d.engagement < 6) {
+  //   return "pink"
+  // } else {
+  //   return "red"
+  // }
 
       // THINGS TO TRY
-      //  - What happens if you add some numbers to myData?
-      //  - What happens if you modify or delete some numbers and myData?
 
 </script>
 </body>
