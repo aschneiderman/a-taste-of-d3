@@ -5,29 +5,28 @@ This animation demonstrates the use of transition.transition to create chained t
   <meta charset="utf-8">
   <script src="http://d3js.org/d3.v3.min.js"></script>         <!-- Load the d3 library -->
   <link href="../../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+  <style>
+    circle {
+      fill: #000;
+      stroke: #000;
+      stroke-width: 1.5px;
+    }
+  </style>
 </head>
-<style>
-  circle {
-    fill: #000;
-    stroke: #000;
-    stroke-width: 1.5px;
-  }
-</style>
 <body>
-  <h1>Chained Transitions</h1>
+<h1>Chained Transitions</h1>
 <p> Based on Mike Bostock's  <a href="http://bl.ocks.org/mbostock/1125997">http://bl.ocks.org/mbostock/1125997</a>,
 mostly tweaked to make it easier for beginners to understand.</p>
 
-  <svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
+<svg width="960" height="500"></svg>        <!-- SVG graphics will go here  -->
 
-  <script type="text/javascript">
-
+<script type="text/javascript">
 // Set the parameters
 var fromColor = "Purple", toColor = "orange",
-  spaceBetweenCircles = 40;
+  spaceBetweenCircles = 70;
 
 // Create a margin so the circles don't get clipped
-var width = 880, height = 320;
+var width = 880, height = 420;
 var svg = d3.select("svg").append("g")
   .attr("transform", "translate(40, 40)");
 

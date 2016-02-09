@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+</head>
+<body>
+<h1>Special Interest Group Member Engagement</h1>
+<h2>Version 2: Delay</h2>
+<svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
+
+<script type="text/javascript">
+
+// Read in CSV file
+// conditional logic for color
+	var myData = [ 5, 10, 15, 20, 25, 5, 20, 10, 20, 5 ];
+
+	d3.select("svg").selectAll("circle")
+		.data(myData)
+	  .enter()
+	  .append("circle")
+			.attr("cy", 200)
+			.attr("cx", function(d, i) { return i * 50 + 100; })
+      .attr("r", function(d) { return d; })
+			.attr("fill", "white" )    // By initially making the circle white, we essentially make it invisible
+      .transition()
+        .attr("fill", "purple")
+        .delay(function(d,i) {return i * 250})
+      ;
+
+
+</script>
+</body>
+</html>

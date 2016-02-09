@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Special Interest Group Member Engagement</h1>
+<h2>Final Version</h2>
 <svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
 
 <script type="text/javascript">
@@ -23,14 +24,13 @@
       .attr("r", function(d) { return d; })
 			.attr("fill", "white" )
       .transition()
-      .attr("fill", "purple")
-      .duration(1500)
-      .delay(function(d,i) {return i * 250})
-      ;
+        .attr("fill", "purple")
+        .delay(function(d,i) {return i * 250})
+        .duration(1500);   // A small change --  a longer duration -- gives the animation a very different feel
+
 
       // THINGS TO TRY
-      //  - What happens if you add some numbers to myData?
-      //  - What happens if you modify or delete some numbers and myData?
+      //  - What happens if you add some numbers to myData?  Or if you modify or delete some numbers?
 
 </script>
 </body>

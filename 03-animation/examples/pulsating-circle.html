@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- http://bl.ocks.org/chiester/11267307
+Pulsating circle -->
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+</head>
+<body>
+
+<h1>Pulsating Circle</h1>
+<p> Based on Chris Hiester's <a href="http://bl.ocks.org/chiester/11267307">http://bl.ocks.org/chiester/11267307</a>,
+mostly tweaked to make it easier for beginners to understand.</p>
+
+<svg width="960" height="500"></svg>        <!-- SVG graphics will go here  -->
+
+<script type="text/javascript">
+// Set the parameters
+var width = 960, height = 500;
+var circleColor = "#398FBD",
+		durationIn = 2000,
+		durationOut = 2000;
+
+var y = d3.scale.ordinal().domain(d3.range(1)).rangePoints([0, height]);
+
+var svg = d3.select("svg");
+
+d3.select("svg").selectAll("circle")
+	.data(y.domain())
+	.enter()
+	.append("circle")
+	.style("stroke", circleColor)
+	.style("fill", "none")
+	.attr("stroke-width", 20)
+	.attr("r", 10)
+	.attr("cx", width / 2)
+	.attr("cy", y)
+	.each(pulse);
+
+function pulse() {
+	var circle = svg.select("circle");
+	(function repeat() {
+		circle = circle.transition()
+			.duration(durationIn)
+			.attr("stroke-width", 20)
+			.attr("r", 10)
+			.transition()
+			.duration(durationOut)
+			.attr('stroke-width', 0.5)
+			.attr("r", 200)
+			.ease('sine')
+			.each("end", repeat);
+	})();
+}
+</script>
+</body>
+</html>
