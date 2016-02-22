@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--http://bl.ocks.org/mbostock/1705868
+Point-Along-Path Interpolation
+This example demonstrates how to use the getTotalLength and getPointAtLength methods on SVG path elements to interpolate a point along a Catmull–Rom spline.
+
+A related technique is stroke dash interpolation. -->
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+  <style>
+  path {
+    fill: none;
+    stroke: #000;
+    stroke-width: 3px;
+  }
+  circle {
+    fill: steelblue;
+    stroke: white;
+    stroke-width: 3px;
+  }
+  </style>
+</head>
+<body>
+<h1>Chained Transitions: Point-Along-Path Using attrTween</h1>
+<p> Based on Mike Bostock's  <a href="http://bl.ocks.org/mbostock/1705868">http://bl.ocks.org/mbostock/1705868</a>,
+mostly tweaked to make it easier for beginners to understand.</p>
+
+<svg width="960" height="500"></svg>        <!-- SVG graphics will go here  -->
+
+<script type="text/javascript">
+// Set the parameters
+var timeToTravelPath =10000;
+var pathPoints = [
+  [480, 200],
+  [580, 400],
+  [680, 100],
+  [780, 300],
+  [180, 300],
+  [280, 100],
+  [380, 400]
+];
+
+var svg = d3.select("svg");
+
+// Draw the path
+var path = svg.append("path")
+    .data([pathPoints])
+    .attr("d", d3.svg.line()
+    .tension(0)   // Need to research what this does
+    .interpolate("cardinal-closed"));
+
+// Draw a circle at each point on pathPoints
+// NOTE:The space between each circle and the path is created by using a 3 pixel "stroke" of white (see CSS above)
+svg.selectAll(".point")
+    .data(pathPoints)
+  .enter().append("circle")
+    .attr("r", 4)
+    .attr("transform", function(d) { return "translate(" + d + ")"; });
+
+// Create the circle that's going to travel around the path
+var travelingCircle = svg.append("circle")
+    .attr("r", 13)
+    .attr("transform", "translate(" + pathPoints[0] + ")");   // Starts the circle at the first point
+
+transition();
+
+function transition() {
+  travelingCircle.transition()
+      .duration(timeToTravelPath)
+      .attrTween("transform", translateAlong(path.node()))    // Need to research this
+      .each("end", transition);
+}
+
+// Returns an attrTween for translating along the specified path element.
+function translateAlong(path) {
+  var pathLength = path.getTotalLength();
+  return function(d, i, a) {
+    return function(t) {
+      var p = path.getPointAtLength(t * pathLength);
+      // console.log(p.x, p.y);
+      return "translate(" + p.x + "," + p.y + ")";
+    };
+  };
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0053)http://bl.ocks.org/mbostock/raw/248bac3b8e354a9103c4/
+original:http://bl.ocks.org/mbostock/248bac3b8e354a9103c4
+ -->
+
+ <head>
+   <meta charset="utf-8">
+   <script src="http://d3js.org/d3.v3.min.js"></script>         <!-- Load the d3 library -->
+   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+   <style>
+
+
+.line path {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+</style>
+</head>
+<body>
+  <h1>Timer: Point along the Path</h1>
+  <p> Based on Mike Bostock's  <a href="http://bl.ocks.org/mbostock/248bac3b8e354a9103c4">http://bl.ocks.org/mbostock/248bac3b8e354a9103c4</a>,
+  mostly tweaked to make it easier for beginners to understand -- although I kept in the funky math that creates the path.</p>
+
+  <svg width="960" height="500"></svg>        <!-- SVG graphics will go here  -->
+
+<script type="text/javascript">
+//Set parameters
+var timeToTravelLine = 3000;
+var margin = {top: 250, right: 120, bottom: 120, left: 120},
+    width = 960 - margin.left - margin.right,
+    height = 960 - margin.top - margin.bottom;
+
+var y = d3.scale.linear()
+    .domain([0, 1])
+    .range([height, 0]);
+
+var x = d3.scale.linear()
+    .domain([0, 1])
+    .range([0, width]);
+
+var path = d3.svg.line();
+
+var svg = d3.select("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// create the path
+var line = svg.append("g")
+    .attr("class", "line")
+  .append("path");
+
+// create the main circle
+var mainCircle = svg.append("circle")
+    .attr("r", 10)
+    .style("fill", "red");
+
+// create the circle that tracks the main circle
+var xtrackingRectangle = svg.append("rect")
+    .attr("x", 0)
+    .attr("width", width)
+    .attr("height",2)
+    .style("fill", "Gray");
+
+// create the circle that tracks the main circle
+var ytrackingRectangle = svg.append("rect")
+    .attr("y", -450)
+    .attr("width", 1)
+    .attr("height",1100)
+    .style("fill", "black");
+
+// And now it's time for some fancy math!
+  ease = function (n,t,u){return t=null==t?1:Math.max(1,t),u=(null==u?0.3:u)/(2*Math.PI),1-t*Math.pow(2,-10*n)*Math.sin((+n+u*Math.asin(1/t))/u)};
+  line.attr("d", path(d3.range(0, 1, 0.002).concat(1).map(function(t) {
+    return [x(t), y(ease(t))];
+  })));
+
+// Now start the timer!
+d3.timer(function(elapsed) {
+  var t = (elapsed % timeToTravelLine) / timeToTravelLine;    //
+  // console.log(t);
+  mainCircle.attr("cx", x(t)).attr("cy", y(ease(t)));
+  xtrackingRectangle.attr("y", y(ease(t)));
+  ytrackingRectangle.attr("x", x(t));
+});
+
+
+</SCRIPT>
+ </BODY></HTML>

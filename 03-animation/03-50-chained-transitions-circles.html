@@ -4,7 +4,7 @@ This animation demonstrates the use of transition.transition to create chained t
 <head>
   <meta charset="utf-8">
   <script src="http://d3js.org/d3.v3.min.js"></script>         <!-- Load the d3 library -->
-  <link href="../../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
   <style>
     circle {
       fill: #000;
@@ -18,46 +18,38 @@ This animation demonstrates the use of transition.transition to create chained t
 <p> Based on Mike Bostock's  <a href="http://bl.ocks.org/mbostock/1125997">http://bl.ocks.org/mbostock/1125997</a>,
 mostly tweaked to make it easier for beginners to understand.</p>
 
-<svg width="960" height="500"></svg>        <!-- SVG graphics will go here  -->
+<svg width="960" height="600"></svg>        <!-- SVG graphics will go here  -->
 
 <script type="text/javascript">
 // Set the parameters
-var fromColor = "Purple", toColor = "orange",
-  spaceBetweenCircles = 70;
+var fromColor = "Purple", toColor = "orange", numberOfColors = 10,
+    numberOfCircles = 50,
+    circleRadius = 25,
+    delayBetweenCircles = 70, SpacingBetweenCircleCenters = 10.2,
+    width = 880, height = 500;
 
 // Create a margin so the circles don't get clipped
-var width = 880, height = 420;
 var svg = d3.select("svg").append("g")
   .attr("transform", "translate(40, 40)");
 
-// What exactly does this do?
-// Looks like and using it to set the circle y plus something else, I think (?)
-var y = d3.scale.ordinal()
-    .domain(d3.range(50))
-    .rangePoints([0, height]);
-
-// Create a scale of colors
+// Create a scale of colors that transition from fromColor to toColor
 var circleColors = d3.scale.linear()
-    .domain([10, 0])
+    .domain([numberOfColors, 0])
     .range([fromColor, toColor])
     .interpolate(d3.interpolateHcl);  //Research interpolation
 
-
 svg.selectAll("circle")
-    .data(y.domain())     // Has an arrayOf 0, 1, 2...
+    .data(d3.range(numberOfCircles))     // Has an array of 0, 1, 2...
   .enter().append("circle")
-    .attr("r", 25)
+    .attr("r", circleRadius)
     .attr("cx", 0)
-    .attr("cy", y)
-    .style("fill", function(d) { return circleColors(Math.abs(d % 20 - 10)); })
+    .attr("cy", function(d,i) {return d * SpacingBetweenCircleCenters})
+    .style("fill", function(d) { return circleColors(d % numberOfColors); })
   .transition()
     .duration(2500)
-    .delay(function(d) { return d * spaceBetweenCircles; })
+    .delay(function(d,i) { return d * delayBetweenCircles; })
     .each(slide);
 
-
-
-// repeat fails because isn't getting passed the circle param
 
 function slide() {
   var circle = d3.select(this);
@@ -70,9 +62,8 @@ function slide() {
         .attr("cx", 0)
         .each("end", repeat);
   };
-
-
   repeat();
+  // NOTE: check with D3 Google groups to make sure that this is actually the same as using parentheses around the function
 }
 </script>
 
