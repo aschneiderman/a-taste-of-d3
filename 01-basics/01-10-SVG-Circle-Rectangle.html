@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <script src="http://d3js.org/d3.v3.min.js"></script>         <!-- Load the d3 library -->
-  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- This command loads CSS from a file -->
+<style>
+  .important {
+    color: Teal;
+  }
+
+  .svg_border {
+    border: 1px dotted Gray;
+  }
+</style>
 </head>
 <body>
-<h1>SVG: A Rectangle and a Circle</h1>
+<h1>Quick and Dirty: HTML, CSS, SVG</h1>
 
-<svg width="960" height="400">
+<p> Using SVG, here's how you create:</p>
+<ul>
+  <li> A purple rectangle</li>
+  <li> A red circle</li>
+</ul>
+<svg width="960" height="400" class="svg_border">
 
-  <!-- Starting at 0, 50, create a purple rectangle with a width of 100 and a height of 300 -->
-  <rect x="0" y="50" width="100" height="300" fill="purple" />
+  <!-- Starting at 40, 50, create a purple rectangle with a width of 100 and a height of 300 -->
+  <rect x="40" y="50" width="100" height="300" fill="purple" />
 
 	<!-- Starting at 150, 50, create a red circle with a radius of 25 and a black border with a width of 2 -->
 	<circle cx="300" cy="100" r="50" fill="red"  stroke="gray" stroke-width="1"  />
 
 </svg>
+<h2 class="important">Colors You Can Choose From</h2>
+<p>  Here's a list of  <a href="http://www.w3schools.com/cssref/css_colornames.asp">web colors that have been given names</a>.</p>
 
-<p> What colors can you use? Here's a  <a href="http://www.w3schools.com/cssref/css_colornames.asp">list of all web colors that have been given names</a>.  You can also use hexadecimals to select from a wider range of colors</p>
+<p>  You can also use hexadecimals to select from a wider range of colors.</p>
 </body>
 </html>

@@ -13,17 +13,16 @@
 
   h1 {
     font-size: 40px;
-    font-weight: 300;
     letter-spacing: -2px;
     margin: .3em 0 .1em 0;
   }
 
   h2 {
     margin-top: 2em;
-    font-weight: 300;
   }
 
-  h1, h2 {
+  h1, h2, h3 {
+    font-weight: 300;
     text-rendering: optimizeLegibility;
   }
 
@@ -33,3 +32,28 @@
 	margin-top:  0;
   padding-top: 0;
 	}
+
+
+  .home_row {
+      float: left;
+      width: 100%;
+      margin: 0;
+  }
+
+  .home_column1 {
+      float: left;
+      width:  50%;
+      margin: 0;
+      right-padding:  2em;
+      right-margin: 3em;
+  }
+
+  .home {
+      margin-left:  50%;   /*  Change this to the width of my left column */
+  }
+
+.cccopyright {
+  /*width: 400px;*/
+  text-align: center;
+  font-size: 10px;
+}
