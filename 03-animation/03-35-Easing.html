@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>				<!-- d3 library -->
+    <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+</head>
+<body>
+  <h1>Easing</h1>
+  <svg width="960" height="500"></svg>        <!-- SVG graphics will go here  -->
+
+<script type="text/javascript">
+var easing = ["linear", "poly", "quad", "cubic", "sin", "exp", "circle", "elastic", "back", "bounce"]
+
+var svg = d3.select("svg");
+
+function tryEase(easeName, i)  {
+  svg.append("text")
+    .attr("x",10)
+    .attr("y", 50 + 50*i)
+    .text(easeName)
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "20px")
+    .style("fill", "steelblue")
+    .transition()
+      .attr("x", 600)
+      .duration(4000)
+      .ease(easeName);
+};
+
+easing.forEach(tryEase);
+</script>
+
+
+</body>
+</html>
