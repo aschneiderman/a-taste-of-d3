@@ -5,76 +5,24 @@
   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
 </head>
 <body>
-<h1>Class 3: Transitions and Animation</h1>
+<h1>Class 4: Layouts And Creating Reusable Code</h1>
 
 <h2>Basic Transitions</h2>
 
 <p> NOTE: switch over to using a table</p>
 
-<div class="example">1)<a href="">Link to D3 graphic</a></div>
+<div class="example">1)<a href="">Circle Packing: Turned into Function</a></div>
  Key Concepts
  <ul><li> bullet point</li>
    <li> bullet point</li></ul>
 
+dendrogram as another example
+<br/> (But not code we will look through, just core concept)
 <div class="example">2)<a href="">Link to D3 graphic</a></div>
 Key Concepts
 <ul><li> bullet point</li>
   <li> bullet point</li></ul>
 
 
-<ul><li> <a href="03-10-Rectangle-Move.html">Moving a rectangle</a></li>
-  <li> <a href="03-12-Rectangle-Color.html">Changing a rectangle's color</a></li>
-  <li> Data into Circles: <a href="03-20-Data-Into-Circles-Delay.html">Delay</a></li>
-  <li> Data into Circles:  <a href="03-22-Data-Into-Circles-Delay-Duration.html">Duration</a></li>
-  <li> Playing with Text:   <a href="03-30-Text-Ms-Melissa.html">Ms. Melissa's Dash-Your-Hopes Board</a></li>
-  <li> <a href="03-35-Easing.html"> Easing</a></li></ul>
-
-
-<h2>Animation Loops </h2>
-1) Basic Chained Transitions
-  <ul><li> <a href="03-50-chained-transitions-circles.html">Circle chain</a></li>
-    <li> <a href="03-55-chained-pulsating-circle.html">Pulsating circle</a></li></ul>
-
-<br/>2) Chained Transitions Using attrTween
-<ul><li> <a href="03-57-chained-attrTween-path.html">Moving along a path</a></li></ul>
-<br/>3) Using a Timer
-<ul><li> <a href="03-70-timer-point-along-line.html">Point along a line</a></li></ul>
-
-<br/> <br/>
-<hr/>
-
-<h3>Notes to Move Elsewhere</h3>
-    <i>
-Also understanding why this gets tricky -- because of the fact that you can't on a separate command line schedule a transition to go right after another transition</p>
-
-  <!-- <p> Bostock's  <a href="examples/chained-transitions-circles.html">Chained Transitions Circles</a>: -->
-  <ul><li> I basically understand what each is doing -- But I need to test to make sure, by putting in a terminal console command to check that the each slide command is happening after every</li>
-    <li><b>Reading up about functions so I can explain what the bizarre ()'s around the function are for</b></li>
-    <li> Asking the Google group about whether this is creating infinite recursion or if this is a case of declarative versus procedural programming:
-    <br/><pre>
-      is this approach infinite recursion?  Why doesn't that cause say memory problems?
-Or is this related somehow to the first question?
-Or am I misreading the code?  Bostock seems to say here that it's not recursion, it's being scheduled (declarative instead of procedural??)
-http://stackoverflow.com/questions/17975783/recursive-recurring-animation-events-in-d3
-You can’t schedule an infinite number of transitions ahead of time. :) However, you can repeatedly schedule a new transition when the old transition ends (or starts), using transition.each to listen for end (or start) events.
-
-    </pre></li>
-  </ul>
-
-
-
-</i>
-<h2>Alternative Strategy: Using a Timer (??)</h2>
-<i>
-<ul>
-  <li> Check out the infinite queue, to see how it works? As precursor to the Action Center Matrix?</li>
-  <li>2 little dots moving along?</li>
-  <li> A little circle going around the track?</li>
-<li> Using buttons and other interactive controls? (Or leave that for pilot projects?)</li>
-<li> What else to take a look at?</li>
-</ul>
-
-</i>
-<h2>Quick and Dirty Flights of Fancy?</h2>
 </body>
 </html>
