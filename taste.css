@@ -54,6 +54,11 @@
 
 .cccopyright {
   /*width: 400px;*/
-  text-align: center;
+  text-align: right;
   font-size: 10px;
+}
+
+
+.yourTurn  {
+      margin-bottom: 1em;
 }
