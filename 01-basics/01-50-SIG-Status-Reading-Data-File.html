@@ -18,14 +18,12 @@ d3.select("svg").selectAll("circle")
   .enter()
   .append("circle")
 		.attr("cy", 100)
-		.attr("cx", function(d, i) { return i * 50 + 100; })
-	  .attr("r", function(d) { console.log(d, d.num);  m = d; return d.num; })
-		.attr("fill", "purple" );
+		.attr("cx", function(d, i) { return i * 70 + 100; })
+	  .attr("r", function(d) { console.log(d, d["size"]);  m = d; return d["size"] * 3; })
+		.attr("fill", function(d){ return d["engagement"] > 6?  "red" : "pink" } );
 });
 
-d3.csv("cities.csv", function(data) {
-  console.log(data[0].city);
-});
+
 </script>
 </body>
 </html>

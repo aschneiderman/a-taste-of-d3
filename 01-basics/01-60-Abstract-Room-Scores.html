@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+</head>
+<body>
+<h1>Room Team Scores</h1>
+<svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
+
+<script type="text/javascript">
+
+
+var  objectives = [
+{ "objective": "1", "row": 4, "col": 1 },
+{ "objective": "2", "row": 3, "col": 1 },
+{ "objective": "3", "row": 2, "col": 1 },
+{ "objective": "4", "row": 1, "col": 1 },
+{ "objective": "5", "row": 1, "col": 2 },
+{ "objective": "6", "row": 2, "col": 3 },
+{ "objective": "7", "row": 3, "col": 4 },
+{ "objective": "8", "row": 4, "col": 3 },
+{ "objective": "9", "row": 4, "col": 2 }
+];
+
+// In the real world, this data would be in a csv file;
+// we'll just dump it here so we can run this example without
+// putting it on a server (since you can't read a csv file w/o using a server)
+var objective_scores = [
+  { "objective": "1", "score":3  },
+  { "objective": "2", "score":3 },
+  { "objective": "3", "score": 1 },
+  { "objective": "4", "score": 4  },
+  { "objective": "5", "score": 3 },
+  { "objective": "6", "score": 2 },
+  { "objective": "7", "score": 5  },
+  { "objective": "8", "score":2 },
+  { "objective": "9", "score": 2 }
+  ];
+
+var width = 70, height = 70;
+svg_area = d3.select("svg")
+
+// Insert a circle for each room
+svg_area.selectAll("circle")
+    .data(objectives)
+  .enter()
+  .append("circle")
+    .attr("cx", function(d,i)  { return d.col * width + 100;})
+    .attr("cy", function(d,i) {return d.row * height;})
+    .attr("r", 30)
+    .style("fill", "orange");
+
+
+// Put the number of the room on each circle
+svg_area.selectAll("text")
+  .data(objectives)
+  .enter()
+  .append("text")
+    .attr("x", function(d,i)  { return d.col * width + 95;})
+    .attr("y", function(d,i) {return d.row * height +  10;})
+    .text(function (d) { return d.objective; })
+    .style("font",   "24px sans-serif")
+    .style("fill", "White")
+    .style("pointer-events", "none");
+
+
+// Change the background color of each of those rooms that have high scores
+svg_area.selectAll("circle")
+  .data( objective_scores, function(d) { return d.objective; })
+  	.style("fill", function(d){ return d.score > 3 ? "purple" : "orange" } );
+</script>
+
+</body>
+</html>
