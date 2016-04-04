@@ -5,45 +5,45 @@
   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
 </head>
 <body>
-<h1>Room Team Scores</h1>
+<h1>office Team Scores</h1>
 <svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
 
 <script type="text/javascript">
 
-
-var  objectives = [
-{ "objective": "1", "row": 4, "col": 1 },
-{ "objective": "2", "row": 3, "col": 1 },
-{ "objective": "3", "row": 2, "col": 1 },
-{ "objective": "4", "row": 1, "col": 1 },
-{ "objective": "5", "row": 1, "col": 2 },
-{ "objective": "6", "row": 2, "col": 3 },
-{ "objective": "7", "row": 3, "col": 4 },
-{ "objective": "8", "row": 4, "col": 3 },
-{ "objective": "9", "row": 4, "col": 2 }
+// Using the row and column, we essentially create an abstract map of the office
+var  office_map = [
+  { "room": "1", "row": 4, "col": 1 },
+  { "room": "2", "row": 3, "col": 1 },
+  { "room": "3", "row": 2, "col": 1 },
+  { "room": "4", "row": 1, "col": 1 },
+  { "room": "5", "row": 1, "col": 2 },
+  { "room": "6", "row": 2, "col": 3 },
+  { "room": "7", "row": 3, "col": 4 },
+  { "room": "8", "row": 4, "col": 3 },
+  { "room": "9", "row": 4, "col": 2 }
 ];
 
 // In the real world, this data would be in a csv file;
 // we'll just dump it here so we can run this example without
 // putting it on a server (since you can't read a csv file w/o using a server)
-var objective_scores = [
-  { "objective": "1", "score":3  },
-  { "objective": "2", "score":3 },
-  { "objective": "3", "score": 1 },
-  { "objective": "4", "score": 4  },
-  { "objective": "5", "score": 3 },
-  { "objective": "6", "score": 2 },
-  { "objective": "7", "score": 5  },
-  { "objective": "8", "score":2 },
-  { "objective": "9", "score": 2 }
-  ];
+var  room_scores = [
+  { "room": "1", "score":3  },
+  { "room": "2", "score":3 },
+  { "room": "3", "score": 1 },
+  { "room": "4", "score": 4  },
+  { "room": "5", "score": 3 },
+  { "room": "6", "score": 2 },
+  { "room": "7", "score": 5  },
+  { "room": "8", "score":2 },
+  { "room": "9", "score": 2 }
+];
 
 var width = 70, height = 70;
 svg_area = d3.select("svg")
 
-// Insert a circle for each room
+// Insert a circle for each office
 svg_area.selectAll("circle")
-    .data(objectives)
+    .data(office_map)
   .enter()
   .append("circle")
     .attr("cx", function(d,i)  { return d.col * width + 100;})
@@ -51,23 +51,22 @@ svg_area.selectAll("circle")
     .attr("r", 30)
     .style("fill", "orange");
 
-
-// Put the number of the room on each circle
+// Put the room number on each circle
 svg_area.selectAll("text")
-  .data(objectives)
+  .data(office_map)
   .enter()
   .append("text")
     .attr("x", function(d,i)  { return d.col * width + 95;})
     .attr("y", function(d,i) {return d.row * height +  10;})
-    .text(function (d) { return d.objective; })
+    .text(function (d) { return d.room; })
     .style("font",   "24px sans-serif")
     .style("fill", "White")
     .style("pointer-events", "none");
 
 
-// Change the background color of each of those rooms that have high scores
+// Change the background color of each room that has a high score
 svg_area.selectAll("circle")
-  .data( objective_scores, function(d) { return d.objective; })
+  .data(  room_scores, function(d) { return d.room; })
   	.style("fill", function(d){ return d.score > 3 ? "purple" : "orange" } );
 </script>
 

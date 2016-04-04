@@ -19,6 +19,7 @@ var sales = [
 
 svg_area = d3.select("svg");
 
+// Create the bars
 svg_area.selectAll("rect")
   .data(sales)
   .enter()
@@ -29,16 +30,17 @@ svg_area.selectAll("rect")
     .attr("height", 30)
     .style("fill", "Sienna");
 
-  svg_area.selectAll("text")
-    .data(sales)
-    .enter()
-    .append("text")
-      .attr("x", 15)
-      .attr("y", function(d,i)  { return i * 50 + 70;})
-      .text(function (d) { return d.category; })
-      .style("font",   "18px sans-serif")
-      .style("fill", "Navy")
-      .style("pointer-events", "none");     // Tells the browser to treat the text as if it were a label, not text you can click on
+// Add the text label
+svg_area.selectAll("text")
+  .data(sales)
+  .enter()
+  .append("text")
+    .attr("x", 15)
+    .attr("y", function(d,i)  { return i * 50 + 70;})
+    .text(function (d) { return d.category; })
+    .style("font",   "18px sans-serif")
+    .style("fill", "Navy")
+    .style("pointer-events", "none");     // Tells the browser to treat the text as if it were a label, not text you can click on
 
 
 // Experiments you could try:
