@@ -5,11 +5,12 @@ A Taste of D3 Punchlist
   - Put Atom, Firefox, GitHub For Windows on people's boxes?
   - When working on things during training, where should they save them?
 
+- Class 2: Document the radial dendrogram
 - Class 3: is the code clean? If not, clean it up
-- Class 2: finish up the code: making code more reusable, using functions
 - Class 4: put together the links
 
 
 - After the class:
   - Work through the Taste and Coding folders
+  - Use Taste of D3 to catalog tricks I've learned, quick links to info about tricks
   - Work through Data Chefs folder: turn into links, etc. on a GitHub site (using Atom)

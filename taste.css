@@ -26,6 +26,10 @@
     text-rendering: optimizeLegibility;
   }
 
+  .instructor p {
+    margin-top: 2em;
+  }
+
   ul {
 	/*padding-left:  0;*/
   /*margin-left: 5;*/

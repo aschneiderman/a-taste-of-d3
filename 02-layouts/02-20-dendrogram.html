@@ -1,11 +1,9 @@
-<DOCTYPE html>
-<html>
+<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Circle Packing</title>
-  <script src="../d3.v3.min.js"></script>        <!-- d3 library -->
+  <title>Cluster Dendrogram</title>
+  <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
   <style>
   body {
     font-family: sans-serif;
@@ -28,29 +26,31 @@
   </style>
 </head>
 <body>
-<h3>Produce</h3>
-<script>
+<h1>Cluster Dendrogram: Produce</h1>
+<p> Based on Mike Bostock's  <a href="http://bl.ocks.org/mbostock/4063570">http://bl.ocks.org/mbostock/4063570</a>,
+mostly tweaked to make it easier for beginners to understand.</p> <br/>
 
+<script>
 // Create the data to display
 var produce = {
   "name": "Produce",
   "children": [
     { "name": "Fruit",
       "children": [
-        {"name": "Apple", "size": 300},
-        {"name": "Banana", "size": 200},
+        {"name": "Apple"},
+        {"name": "Banana"},
         { "name": "Berries",
           "children": [
-            {"name": "Raspberries", "size": 100},
-            {"name": "Strawberries", "size": 200},
-            {"name": "Blueberries", "size": 80}
+            {"name": "Raspberries"},
+            {"name": "Strawberries"},
+            {"name": "Blueberries"}
           ] }
       ] },
     { "name": "Veggies",
       "children":  [
-        {"name": "Zucchini", "size": 52},
-        {"name": "Peas", "size": 50},
-        {"name": "Carrots", "size": 60}
+        {"name": "Zucchini"},
+        {"name": "Peas"},
+        {"name": "Carrots"}
       ] }
 ] };
 
@@ -101,5 +101,3 @@ nodes.append("text")
 
 </body>
 </html>
-
-<!-- Based on Mike Bostock's dendrogram: http://bl.ocks.org/mbostock/4063570 -->

@@ -1,9 +1,10 @@
-<DOCTYPE html>
-<html>
+<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
+  <title>Org Chart</title>
+  <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
   <title>Circle Packing</title>
-  <script src="../d3.v3.min.js"></script>        <!-- d3 library -->
 	<style>
   body {
 	  font-family: sans-serif;
@@ -28,7 +29,8 @@
 	</style>
 </head>
 <body>
-	<h3>Produce Popularity</h3>
+	<h1>Circle Packing: Produce Popularity</h1>
+  <br/>
   <script type="text/javascript">
 // Create the data
 var produce = {
@@ -84,7 +86,8 @@ nodes.filter(function(d) { return !d.children; })
     .text(function(d) { return d.name; });
 </script>
 
+<br/><p>&nbsp;</p>
+<p> Based on Mike Bostock's  <a href="http://bl.ocks.org/mbostock/4063530">http://bl.ocks.org/mbostock/4063530</a>,
+mostly tweaked to make it easier for beginners to understand.</p> <br/>
 </body>
 </html>
-
-<!-- Based on mbostock’s block #4063530 November 13, 2012  -->

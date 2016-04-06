@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Org Chart</title>
+  <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+
+  <script src="orgChart.js"></script>                           <!-- The organization chart function that we've created -->
+  <link href="orgChart.css" rel="stylesheet" media="screen">    <!-- To change the look and feel of the organization chart, just change this stylesheet.
+                                                                     Why use a stylesheet vs making the colors, etc parameters of the orgChart funtion?
+                                                                     So a graphics designer, who's used to using CSS,  can easily tweak the entire look and feel.-->
+
+</head>
+<body>
+<h1>Reusable Code: Org Chart</h1>
+
+
+<script>
+// Create the data to display
+// In a real-world example, we would store this data in a CSV file
+var neuroticsRUs = {
+  "name": "Neurotics R Us",
+  "children": [
+    { "name": "Passive Cluster",
+      "children": [
+        {"name": "Dr Sadsack"},
+        {"name": "Mr Bananas"},
+        { "name": "Dept of Sulking",
+          "children": [
+            {"name": "Mr Droopy"},
+            {"name": "Ms StnInRain"},
+            {"name": "Ms Glower"}
+          ] }
+      ] },
+    { "name": "Aggressive Cluster",
+      "children":  [
+        {"name": "Mr KnowItAll"},
+        {"name": "Dr No"},
+        {"name": "Ms GoAway"}
+      ] }
+] };
+
+var width = 800, height = 500;
+orgChart(width, height, neuroticsRUs);
+</script>
+
+</body>
+</html>
