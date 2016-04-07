@@ -9,7 +9,7 @@
     font-family: sans-serif;
   }
   .node circle {
-    fill: #fff;
+    fill:  white;
     stroke: steelblue;
     stroke-width: 1.5px;
   }
@@ -23,6 +23,7 @@
     stroke: #ccc;
     stroke-width: 1.5px;
   }
+
   </style>
 </head>
 <body>
@@ -58,10 +59,10 @@ var width = 800, height = 500;
 
 // Create the SVG area, and indent the dendrogram so the first node's title is visible
 var svg = d3.select("body").append("svg")
-    .attr("width", width)
+    .attr("width", width + 160)
     .attr("height", height)
   .append("g")
-    .attr("transform", "translate(80,0)");
+    .attr("transform", "translate(80,0)");    // indent the dendrogram 80 pixels
 
 // Create a cluster layout function
 var cluster = d3.layout.cluster()
@@ -72,6 +73,7 @@ var clusteredNodes = cluster.nodes(produce),
     clusteredLinks = cluster.links(clusteredNodes);
 
 // Create the lines that connect the nodes
+// How exactly does it work?  It's magical  :-)  -- i.e. for the purpose of this class we don't have to sweat it
 var link = svg.selectAll(".link")
     .data(clusteredLinks)
   .enter().append("path")
@@ -95,6 +97,8 @@ nodes.append("text")
     .attr("dx", function(d) { return d.children ? -8 : 8; })
     .attr("dy", 3)
     .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+    .style("fill", "black")
+    .style("font-size", "15px")
     .text(function(d) { return d.name; });
 
 </script>
