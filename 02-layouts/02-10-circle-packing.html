@@ -69,6 +69,12 @@ var packedLayout = d3.layout.pack()
     .value(function(d) { return d.quantity; });
 var packedNodes = packedLayout.nodes(produce);
 
+// Uncomment these lines to dump out the layout data in  the browser console
+// console.log(packedNodes);
+// packedNodes.forEach(function(d, i) { console.log(i + ") " + d.name + ":  x: " + Math.round(d.x)
+//             + ",  y:" + Math.round(d.y) + ", r: " + Math.round(d.r)); });
+
+
 // For each item, add a group to hold the circle and the text
 var nodes = svg.selectAll("g")
     .data(packedNodes)
@@ -80,7 +86,7 @@ var nodes = svg.selectAll("g")
 nodes.append("circle")
     .attr("r", function(d) { return d.r; });
 
-//For each group,add a text label
+//For each group: if it doesn't have children, add a text label
 nodes.filter(function(d) { return !d.children; })
   .append("text")
     .text(function(d) { return d.name; });

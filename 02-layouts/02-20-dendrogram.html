@@ -69,8 +69,17 @@ var cluster = d3.layout.cluster()
     .size([height, width - 160]);
 
 // Use the cluster layout function to calculate the position of the nodes and lines that connect them
-var clusteredNodes = cluster.nodes(produce),
-    clusteredLinks = cluster.links(clusteredNodes);
+var clusteredNodes = cluster.nodes(produce);
+var clusteredLinks = cluster.links(clusteredNodes);
+
+console.log("Circles:", clusteredNodes);
+clusteredNodes.forEach(function(d, i) { console.log(i + ") " + d.name + ":  x: " + Math.round(d.x)
+                + ",  y:" + Math.round(d.y) ); });
+console.log("\nLines:", clusteredLinks);
+clusteredLinks.forEach(function(d, i) { console.log(i + ") source: " + d.source.name + " (" + Math.round(d.source.x)
+                                + ", " + Math.round(d.source.y) + "), target: " + d.target.name +  " (" + Math.round(d.target.x)
+                                + ", " + Math.round(d.target.y) + ")"
+            ); });
 
 // Create the lines that connect the nodes
 // How exactly does it work?  It's magical  :-)  -- i.e. for the purpose of this class we don't have to sweat it
