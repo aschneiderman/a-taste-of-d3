@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<!-- http://bl.ocks.org/mbostock/1125997
-This animation demonstrates the use of transition.transition to create chained transitions. Chained transitions inherit the reference time of the original transition, guaranteeing synchronicity. Furthermore, since initial transitions are created within the context of transition.each the circles are precisely synchronized. -->
 <head>
   <meta charset="utf-8">
   <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
-  <style>
-    circle {
-      fill: #000;
-      stroke: #000;
-      stroke-width: 1.5px;
-    }
-  </style>
+<style>
+  circle {
+    fill: #000;
+    stroke: #000;
+    stroke-width: 1.5px;
+  }
+</style>
 </head>
 <body>
 <h1>Chained Transitions</h1>
@@ -38,6 +36,7 @@ var circleColors = d3.scale.linear()
     .range([fromColor, toColor])
     .interpolate(d3.interpolateHcl);  //Research interpolation
 
+// Create the circles at their initial position and start the first transition
 svg.selectAll("circle")
     .data(d3.range(numberOfCircles))     // Has an array of 0, 1, 2...
   .enter().append("circle")
@@ -51,19 +50,20 @@ svg.selectAll("circle")
     .each(slide);
 
 
+// Yeah, this is definitely weird; the next version of D3 has a cleaner way of doing this.
+// Essentially what happens is that when a circle is at the end of its current transition,
+// .each("end") starts up another round of transitions
 function slide() {
   var circle = d3.select(this);
 
-  function repeat() {
-    // console.log("repeat", circle);
+  function doTransition() {
     circle = circle.transition()
         .attr("cx", width)
       .transition()
         .attr("cx", 0)
-        .each("end", repeat);
+        .each("end", doTransition);
   };
-  repeat();
-  // NOTE: check with D3 Google groups to make sure that this is actually the same as using parentheses around the function
+  doTransition();
 }
 </script>
 

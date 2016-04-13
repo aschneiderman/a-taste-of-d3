@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html>
 <head>
-    <meta charset="utf-8">
-    <title>Template</title>
-    <script src="../d3.v3.min.js" charset="utf-8"></script>				<!-- d3 library -->
+  <meta charset="utf-8">
+  <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
 </head>
-<body style="font-family:verdana;">
-<h1>Ms Melissa Says:</h1>
+<body>
+<h1>Animating Text: Ms Melissa Says</h1>
 <svg width="900" height="900" id="selected_states" class="SVG_playground">
 
   // Picture of Melissa the cat, moved over to allow space for the text
@@ -34,7 +33,7 @@ var text = svg.selectAll("text")
   .data(melissaSays)
   .enter()
   .append("text")
-    .attr("x",60)
+    .attr("x",40)
     .attr("y",340)
     .text( function(d,i) { return d;})
     .attr("font-family", "sans-serif")
@@ -50,23 +49,6 @@ var timing = 2000;
     .attr("y", function(d,i)  { return i * 55 + 100})
     .style("fill", "red")
     .style("opacity", 1);
-
-// var myText = svg.append("text")
-//   .attr("x",60)
-//   .attr("y",60)
-//   .text("Changing")
-//   .attr("font-family", "sans-serif")
-//   .attr("font-size", "36px")
-//   .style("fill", "green");
-//
-// myText
-//   .transition()
-//   .duration(2600)
-//   .style("fill", "Purple")
-//   .attr("x",420)
-//   .attr("y",280)
-//   .ease("bounce");
-
 </script>
 
 

@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--http://bl.ocks.org/mbostock/1705868
-Point-Along-Path Interpolation
-This example demonstrates how to use the getTotalLength and getPointAtLength methods on SVG path elements to interpolate a point along a Catmull–Rom spline.
-
-A related technique is stroke dash interpolation. -->
 <head>
   <meta charset="utf-8">
   <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
@@ -19,7 +14,7 @@ A related technique is stroke dash interpolation. -->
     stroke: white;
     stroke-width: 3px;
   }
-  </style>
+</style>
 </head>
 <body>
 <h1>Chained Transitions: Point-Along-Path Using attrTween</h1>
@@ -65,14 +60,18 @@ var travelingCircle = svg.append("circle")
 
 transition();
 
+
 function transition() {
-  travelingCircle.transition()
+  travelingCircle
+    .transition()
       .duration(timeToTravelPath)
-      .attrTween("transform", translateAlong(path.node()))    // Need to research this
+      .attrTween("transform", translateAlong(path.node()))    // Yeah, this is weird
       .each("end", transition);
 }
 
-// Returns an attrTween for translating along the specified path element.
+
+// Returns the commands for creating the specified path
+// And yeah, this is weird -- really don't sweat this unless you are planning on using this technique a bunch
 function translateAlong(path) {
   var pathLength = path.getTotalLength();
   return function(d, i, a) {
@@ -83,7 +82,6 @@ function translateAlong(path) {
     };
   };
 }
-
 </script>
 
 </body>

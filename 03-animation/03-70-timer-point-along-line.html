@@ -1,23 +1,16 @@
-﻿<!DOCTYPE HTML>
-<!-- saved from url=(0053)http://bl.ocks.org/mbostock/raw/248bac3b8e354a9103c4/
-original:http://bl.ocks.org/mbostock/248bac3b8e354a9103c4
- -->
-
- <head>
-   <meta charset="utf-8">
-   <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
-   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
-   <style>
-
-
-.line path {
-  fill: none;
-  stroke: #000;
-  stroke-width: 2px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+  <style>
+    .line path {
+      fill: none;
+      stroke: #000;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 </style>
 </head>
 <body>
@@ -74,15 +67,19 @@ var ytrackingRectangle = svg.append("rect")
     .attr("height",1100)
     .style("fill", "black");
 
-// And now it's time for some fancy math!
+  // And now it's time for some fancy math!
+  // What this very weird looking code does is create the points along the path that the circle will follow
+  // Don't sweat this unless you are going to use this technique a bunch
   ease = function (n,t,u){return t=null==t?1:Math.max(1,t),u=(null==u?0.3:u)/(2*Math.PI),1-t*Math.pow(2,-10*n)*Math.sin((+n+u*Math.asin(1/t))/u)};
-  line.attr("d", path(d3.range(0, 1, 0.002).concat(1).map(function(t) {
-    return [x(t), y(ease(t))];
-  })));
+  line.attr("d", path(d3.range(0, 1, 0.002).concat(1).map(function(t) { return [x(t), y(ease(t))]; })));
 
 // Now start the timer!
+// Unlike using a transition, where we tell D3 what to do and it figures out how,
+// here we set up a timer, and every time the timer advances, we change the location of the circle and
+// the 2 tracking lines
+// And yeah, this is pretty weird -- Unless you are going to use this technique a bunch, don't sweat it
 d3.timer(function(elapsed) {
-  var t = (elapsed % timeToTravelLine) / timeToTravelLine;    //
+  var t = (elapsed % timeToTravelLine) / timeToTravelLine;
   // console.log(t);
   mainCircle.attr("cx", x(t)).attr("cy", y(ease(t)));
   xtrackingRectangle.attr("y", y(ease(t)));

@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- http://bl.ocks.org/chiester/11267307
-Pulsating circle -->
 <head>
   <meta charset="utf-8">
   <script src="../d3.v3.min.js"></script>         <!-- Load the d3 library -->
@@ -10,7 +8,8 @@ Pulsating circle -->
 
 <h1>Pulsating Circle</h1>
 <p> Based on Chris Hiester's <a href="http://bl.ocks.org/chiester/11267307">http://bl.ocks.org/chiester/11267307</a>,
-mostly tweaked to make it easier for beginners to understand.</p>
+mostly tweaked to make it easier for beginners to understand.
+<br/> NOTE: it takes a second or two before the animation begins.</p>
 
 <svg width="960" height="500"></svg>        <!-- SVG graphics will go here  -->
 
@@ -24,6 +23,7 @@ var circleColor = "#398FBD",
 
 var svg = d3.select("svg");
 
+// Create the circle and start the first transition
 svg.append("circle")
 	.style("stroke", circleColor)
 	.style("fill", "none")
@@ -33,10 +33,12 @@ svg.append("circle")
 	.attr("cy", height / 2)
 	.each(pulse);
 
+
+// Again, yeah, this is a weird way to handle creating an endless loop of transitions
 function pulse() {
 	var circle = svg.select("circle");
 
-  function repeat() {
+  function doTransition() {
 		circle = circle
     .transition()
 			.duration(durationIn)
@@ -47,9 +49,9 @@ function pulse() {
 			.attr('stroke-width', 0.5)
 			.attr("r", 200)
 			.ease('sine')
-			.each("end", repeat);
+			.each("end", doTransition);
     };
-    repeat();
+    doTransition();
 }
 </script>
 </body>
