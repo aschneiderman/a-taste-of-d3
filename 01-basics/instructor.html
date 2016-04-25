@@ -5,82 +5,82 @@
   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
 </head>
 <body>
-  <div class="home_row">
-  <div class="home_column1">
 
-<h1>Class 1: The Basics</h1>
+<div class="row">
+  <div class="main">
+    <h1>Class 1: The Basics</h1>
+    <p> The following are the links to working versions of each of the data visualizations and notes about each visualization.</p>
+    <p> To get access to the code behind the examples, you'll need to  <a href="https://github.com/datachefs/a-taste-of-d3/archive/gh-pages.zip">download it</a> from A Taste of D3's <a href="https://github.com/datachefs/a-taste-of-d3/">GitHub site</a>.</p>
+  </div>  <!-- end main -->
 
-<p> The following are the links to working versions of each of the data visualizations and notes about each visualization.</p>
-
-<p> To get access to the code behind the examples, you'll need to  <a href="https://github.com/datachefs/a-taste-of-d3/archive/gh-pages.zip">download it</a> from A Taste of D3's <a href="https://github.com/datachefs/a-taste-of-d3/">GitHub site</a>.</p>
-</div>
-<div class="home_column2" class="homepage_picture">
-  <img width=400 height=266 src="../Young_Boys_Cook.jpg" />
-  <br/>
-  <div class="cccopyright"> <a href="https://www.flickr.com/photos/mitikusa/2504868526/sizes/o/">yoshiyasu nishikawa</a>,  licensed under CC BY 2.0 </div>
-
-</div>
-</div>
+  <div class="sidebar" >
+    <img width=400 height=266 src="../Young_Boys_Cook.jpg" />
+    <br/>
+    <div class="cccopyright"> <a href="https://www.flickr.com/photos/mitikusa/2504868526/sizes/o/">yoshiyasu nishikawa</a>,  licensed under CC BY 2.0 </div>
+  </div>  <!-- end sidebar -->
+</div> <!-- end row -->
 
 <div class="instructor">
+  <div class="row">
+    <div class="main">
+      <h2>A)  Intro</h2>
+        <p>Why is D3 so powerful?  Why is it hard to learn?        </p>
+      <h2>B) Quick and Dirty:  HTML, CSS, SVG</h2>
+      <div class="example">1) <a href="01-10-SVG-Circle-Rectangle.html">Creating a rectangle and a circle</a></div>
+       Key Concepts:
+       <ul><li> Both HTML, which is used to create text, and SVG, which is used to create graphics, are just text with tags</li>
+         <li> CSS can be used to change the look and feel of both HTML and SVG</li></li>
+       <li> You can put CSS inside an HTML file, or you can reuse it by putting it in a separate file and pointing to it</ul>
+      <div class="yourTurn">Your Turn: change the color of the rectangle or the circle</div>
 
-<h2>A)  Intro</h2>
-<h2>B) Quick and Dirty:  HTML, CSS, SVG</h2>
+      <h2>C) Very Simple D3</h2>
 
+      <div class="example">1) <a href="01-20-Data-Into-Circles.html">Turn Simple Data into Circles</a></div>
+       Key Concepts:
+       <ul><li>Learning most programming, you only have to do with one new concept at a time, D3.JS throws a bunch of concepts at you right at the start</li>
+         <li> But don't sweat it! The patterns you see here you'll use over and over and will become second nature:</li>
+         <ul><li>selectAll, data, enter, append: the most common pattern for creating a data viz.</li>
+           <li> Yeah, using 'selectAll("circle")' when you <b>know</b> there are no circles is weird -- but it's a very common pattern and you'll get used to it</li>
+           <li>function(d,i), a.k.a. an anonymous function looks weird, but again very common pattern you use over and over</li></ul>
+      </ul>
+      <div class="yourTurn">Your Turn: try adding, deleting, modifying numbers in myData</div>
 
-<div class="example">1) <a href="01-10-SVG-Circle-Rectangle.html">Creating a rectangle and a circle</a></div>
- Key Concepts:
- <ul><li> Both HTML, which is used to create text, and SVG, which is used to create graphics, are just text with tags</li>
-   <li> CSS can be used to change the look and feel of both HTML and SVG</li></li>
- <li> You can put CSS inside an HTML file, or you can reuse it by putting it in a separate file and pointing to it</ul>
-<div class="yourTurn">Your Turn: change the color of the rectangle or the circle</div>
+      <div class="example">2) <a href="01-30-Data-into-Circles-Three-Ways.html">Turn Data into Circles Three Ways</a></div>
+       Key Concepts: small tweaks, big changes
+       <div class="yourTurn">Your Turn: Try changing color, spacing, see what happends  </div>
 
-<h2>C) Very Simple D3</h2>
+       <h3>Debugging Basics </h3>
 
-<div class="example">1) <a href="01-20-Data-Into-Circles.html">Turn Simple Data into Circles</a></div>
- Key Concepts:
- <ul><li>Learning most programming, you only have to do with one new concept at a time, D3.JS throws a bunch of concepts at you right at the start</li>
-   <li> But don't sweat it! The patterns you see here you'll use over and over and will become second nature:</li>
-   <ul><li>selectAll, data, enter, append: the most common pattern for creating a data viz.</li>
-     <li> Yeah, using 'selectAll("circle")' when you <b>know</b> there are no circles is weird -- but it's a very common pattern and you'll get used to it</li>
-     <li>function(d,i), a.k.a. an anonymous function looks weird, but again very common pattern you use over and over</li></ul>
-</ul>
-<div class="yourTurn">Your Turn: try adding, deleting, modifying numbers in myData</div>
+      <h2>D)  Simple Real-World Examples</h2>
 
-<div class="example">2) <a href="01-30-Data-into-Circles-Three-Ways.html">Turn Data into Circles Three Ways</a></div>
- Key Concepts: small tweaks, big changes
- <div class="yourTurn">Your Turn: Try changing color, spacing, see what happends  </div>
+      <h3>1) Reading Data from a File: <a href="http://datachefs.github.io/a-taste-of-d3/01-basics/01-40-SIG-Status-Reading-Data-File.html">SIG Status</a></h3>
+        <p>NOTE:  because this D3 script reads a file, for security reasons it must be run on a server; if you try
+        running it just from your browser, you'll get an error message. It's not hard to run a tiny server on your desktop, but it takes some setup. So for the purpose of this class, the link above doesn't point to the filing your desktop, it points to the file on the class GitHub site. </p>
+        Key concepts:
+        <ul>
+          <li> Reading data from a file</li>
+          <li> Using conditional logic for color: we will get to play with it in the next example</li>
+          <li> Beginning to think about scalable solutions -- e.g., new data from a file each month </li>
+        </ul>
 
- <h3>Debugging Basics </h3>
+      <h3>2) Creating an Abstract Map:  <a href="01-50-Abstract-Room-Scores.html">Team Room Scores</a> </h3>
+        Key concepts:
+        <ul>
+        <li> Abstract map: very simple technique, allows you to put items wherever you want, so also very flexible</li>
+          </ul>
+        <div class="yourTurn">Your Turn:change the colors in the conditional logic</div>
+        <div class="yourTurn">Your Turn: Try a different map  </div>
 
-<h2>D)  Simple Real-World Examples</h2>
-
-<h3>1) Reading Data from a File: <a href="http://datachefs.github.io/a-taste-of-d3/01-basics/01-40-SIG-Status-Reading-Data-File.html">SIG Status</a></h3>
-  <p>NOTE:  because this D3 script reads a file, for security reasons it must be run on a server; if you try
-  running it just from your browser, you'll get an error message. It's not hard to run a tiny server on your desktop, but it takes some setup. So for the purpose of this class, the link above doesn't point to the filing your desktop, it points to the file on the class GitHub site. </p>
-  Key concepts:
-  <ul>
-    <li> Reading data from a file</li>
-    <li> Using conditional logic for color: we will get to play with it in the next example</li>
-    <li> Beginning to think about scalable solutions -- e.g., new data from a file each month </li>
-  </ul>
-
-<h3>2) Creating an Abstract Map:  <a href="01-50-Abstract-Room-Scores.html">Team Room Scores</a> </h3>
-  Key concepts:
-  <ul>
-  <li> Abstract map: very simple technique, allows you to put items wherever you want, so also very flexible</li>
-    </ul>
-  <div class="yourTurn">Your Turn:change the colors in the conditional logic</div>
-  <div class="yourTurn">Your Turn: Try a different map  </div>
-
-  <h3>3) Simple Clothing Sales <a href="01-60-Simple-Bar-Chart.html"> Bar Chart</a> (more complex data) </h3>
-  Key Concepts:
-  <ul>
-    <li> Data: array of objects</li>
-    <li> It's pretty, but took a lot of work and isn't close to being done -- needs legend, etc.
-    D3 gives you total control, but sometimes that's way more control than you want to have to spend time on </li>
-  </ul>
-  <div class="yourTurn">Your Turn: switch from sales to purchases  </div>
+        <h3>3) Simple Clothing Sales <a href="01-60-Simple-Bar-Chart.html"> Bar Chart</a> (more complex data) </h3>
+        Key Concepts:
+        <ul>
+          <li> Data: array of objects</li>
+          <li> It's pretty, but took a lot of work and isn't close to being done -- needs legend, etc.
+          D3 gives you total control, but sometimes that's way more control than you want to have to spend time on </li>
+        </ul>
+        <div class="yourTurn">Your Turn: switch from sales to purchases  </div>
+    </div>  <!-- end main -->
+  </div> <!-- end row -->
 </div>  <!-- end instructor -->
 </body>
 </html>

@@ -5,50 +5,51 @@
   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
 </head>
 <body>
-  <div class="home_row">
-  <div class="home_column1">
 
-<h1>Class 2: Using Layouts, Creating Reusable Code</h1>
+<div class="row">
+  <div class="main">
+    <h1>Class 2: Using Layouts, Creating Reusable Code</h1>
+    <p> The following are the links to working versions of each of the data visualizations and notes about each visualization.</p>
+    <p> To get access to the code behind the examples, you'll need to  <a href="https://github.com/datachefs/a-taste-of-d3/archive/gh-pages.zip">download it</a> from A Taste of D3's <a href="https://github.com/datachefs/a-taste-of-d3/">GitHub site</a>.</p>
+  </div>  <!-- end main -->
 
-<p> The following are the links to working versions of each of the data visualizations and notes about each visualization.</p>
-
-<p> To get access to the code behind the examples, you'll need to  <a href="https://github.com/datachefs/a-taste-of-d3/archive/gh-pages.zip">download it</a> from A Taste of D3's <a href="https://github.com/datachefs/a-taste-of-d3/">GitHub site</a>.</p>
-</div>
-<div class="home_column2" class="homepage_picture">
-  <img width=400 height=266 src= "../Concentrating_Young_Girl_Chef.jpg" />
-  <br/>
-  <div class="cccopyright"> <a href="https://www.flickr.com/photos/stevendepolo/15667640484/">Steven Depolo</a>, licensed under CC BY 2.0 </div>
-</div>
-</div>
+  <div class="sidebar" >
+    <img width=400 height=266 src= "../Concentrating_Young_Girl_Chef.jpg" />
+    <br/>
+    <div class="cccopyright"> <a href="https://www.flickr.com/photos/stevendepolo/15667640484/">Steven Depolo</a>, licensed under CC BY 2.0 </div>
+  </div>  <!-- end sidebar -->
+</div> <!-- end row -->
 
 <div class="instructor">
-<br/>
-<h2>A) Layout + JSON Data = Circle Packing</h2>
-<p>Creating a <a href="02-10-circle-packing.html">Circle Packing Diagram</a></p>
-Key Concepts:
-<ul>
-  <li> Using Stylesheet rather than doing it all by code: Try changing the colors</li>
-  <li>JSON data, for hierarchical data: try tweaking it</li>
-  <li>Grouping: to make it easier to keep the pieces together</li>
-  <li> Layout, to hide the details: try using console log </li>
-</ul>
+  <div class="row">
+    <div class="main">
+      <h2>A) Layout + JSON Data = Circle Packing</h2>
+      <p>Creating a <a href="02-10-circle-packing.html">Circle Packing Diagram</a></p>
+      Key Concepts:
+      <ul>
+        <li> Using Stylesheet rather than doing it all by code: Try changing the colors</li>
+        <li>JSON data, for hierarchical data: try tweaking it</li>
+        <li>Grouping: to make it easier to keep the pieces together</li>
+        <li> Layout, to hide the details: try using console log </li>
+      </ul>
 
 
-<h2>B) Dendrogram Layout</h2>
-<p> <a href="02-20-dendrogram.html">Cluster Dendrogram</a></p>
-Key Concepts:
-<ul><li>Different Layout</li>
-  <li> Lines, circles, text (this is where grouping really pays off)</li>
-</ul>
+      <h2>B) Dendrogram Layout</h2>
+      <p> <a href="02-20-dendrogram.html">Cluster Dendrogram</a></p>
+      Key Concepts:
+      <ul><li>Different Layout</li>
+        <li> Lines, circles, text (this is where grouping really pays off)</li>
+      </ul>
 
 
-<h2>C) Creating Reusable Code</h2>
-<p>  <a href="02-40-dendrogram-function.html">Org Chart</a></p>
-Key Concepts:
-<ul><li>Pretty easy to do: create a function,Add parameters, move the data into the new file, call the new file</li>
-  <li> Also reusable: using a stylesheet (alternatively, could just pass parameters into function) </li>
-</ul>
-
+      <h2>C) Creating Reusable Code</h2>
+      <p>  <a href="02-40-dendrogram-function.html">Org Chart</a></p>
+      Key Concepts:
+      <ul><li>Pretty easy to do: create a function,Add parameters, move the data into the new file, call the new file</li>
+        <li> Also reusable: using a stylesheet (alternatively, could just pass parameters into function) </li>
+      </ul>
+    </div>  <!-- end main -->
+  </div> <!-- end row -->
 </div>  <!-- end instructor -->
 </body>
 </html>

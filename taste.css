@@ -1,15 +1,30 @@
-  html {
-    min-width: 1040px;
-  }
-
   body {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
-
-
-  margin: 1em auto 4em auto;
-    position: relative;
-    width: 960px;
+  margin:15px;
+  padding:5 px;
   }
+
+  .row {
+    width: 900px;
+    margin: 10px;
+    clear:both;
+  }
+
+
+.main {
+  float:left;
+  width: 70%
+}
+
+.sidebar {
+  float:right;
+  width:30%
+}
+
+.instructor p {
+  margin-top: 2em;
+}
+
 
   h1 {
     font-size: 40px;
@@ -26,38 +41,14 @@
     text-rendering: optimizeLegibility;
   }
 
-  .instructor p {
-    margin-top: 2em;
-  }
-
   ul {
-	/*padding-left:  0;*/
-  /*margin-left: 5;*/
 	margin-top:  0;
   padding-top: 0;
 	}
 
-
-  .home_row {
-      float: left;
-      width: 100%;
-      margin: 0;
-  }
-
-  .home_column1 {
-      float: left;
-      width:  50%;
-      margin: 0;
-  }
-
-  .home {
-      margin-left:  50%;   /*  Change this to the width of my left column */
-  }
-
 .cccopyright {
-  /*width: 400px;*/
   text-align: right;
-  font-size: 10px;
+  font-size: 9px;
 }
 
 
