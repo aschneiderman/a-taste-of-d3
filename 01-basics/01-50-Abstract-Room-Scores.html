@@ -12,30 +12,30 @@
 
 // Using the row and column, we essentially create an abstract map of the office
 var  office_map = [
-  { "room": "1", "row": 4, "col": 1 },
-  { "room": "2", "row": 3, "col": 1 },
-  { "room": "3", "row": 2, "col": 1 },
-  { "room": "4", "row": 1, "col": 1 },
-  { "room": "5", "row": 1, "col": 2 },
-  { "room": "6", "row": 2, "col": 3 },
-  { "room": "7", "row": 3, "col": 4 },
-  { "room": "8", "row": 4, "col": 3 },
-  { "room": "9", "row": 4, "col": 2 }
+  { room: "1", row: 4, col: 1 },
+  { room: "2", row: 3, col: 1 },
+  { room: "3", row: 2, col: 1 },
+  { room: "4", row: 1, col: 1 },
+  { room: "5", row: 1, col: 2 },
+  { room: "6", row: 2, col: 3 },
+  { room: "7", row: 3, col: 4 },
+  { room: "8", row: 4, col: 3 },
+  { room: "9", row: 4, col: 2 }
 ];
 
 // In the real world, this data would be in a csv file;
 // we'll just dump it here so we can run this example without
 // putting it on a server (since you can't read a csv file w/o using a server)
 var  room_scores = [
-  { "room": "1", "score":3  },
-  { "room": "2", "score":3 },
-  { "room": "3", "score": 1 },
-  { "room": "4", "score": 4  },
-  { "room": "5", "score": 3 },
-  { "room": "6", "score": 2 },
-  { "room": "7", "score": 5  },
-  { "room": "8", "score":2 },
-  { "room": "9", "score": 2 }
+  { room: "1", score:3  },
+  { room: "2", score:3 },
+  { room: "3", score: 1 },
+  { room: "4", score: 4  },
+  { room: "5", score: 3 },
+  { room: "6", score: 2 },
+  { room: "7", score: 5  },
+  { room: "8", score:2 },
+  { room: "9", score: 2 }
 ];
 
 var width = 70, height = 70;
@@ -47,7 +47,7 @@ svg_area.selectAll("circle")
   .enter()
   .append("circle")
     .attr("cx", function(d,i)  { return d.col * width + 100;})
-    .attr("cy", function(d,i) {return d.row * height;})
+    .attr("cy", function(d,i)  {return d.row * height;})
     .attr("r", 30)
     .style("fill", "orange");
 
@@ -57,7 +57,7 @@ svg_area.selectAll("text")
   .enter()
   .append("text")
     .attr("x", function(d,i)  { return d.col * width + 95;})
-    .attr("y", function(d,i) {return d.row * height +  10;})
+    .attr("y", function(d,i)  {return d.row * height +  10;})
     .text(function (d) { return d.room; })
     .style("font",   "24px sans-serif")
     .style("fill", "White")
