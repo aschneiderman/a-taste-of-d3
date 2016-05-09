@@ -39,11 +39,12 @@
         <ul><li> The good news: Although some of the code looks weird, most of the weird code is a pattern you will use over and over and over -- D3 gets used in a very patterned way</li>
           <li>The other good news: you don't need to know everything to start using it -- so long as you know that up front</li>
         </li> The key to this strategy: the motto, "Don't Sweat It!"  Yeah, it looks a little weird at first but you'll see the same patterns over and over. Yeah, there are a lot of things you need to learn eventually, but to get started you just need to have a feel for what the code is doing. And there are lots and lots of examples to learn from. So long as you don't sweat everything, you'll be fine.</li></ul>
+        <p>3) Using the  <a href="http://flight-manual.atom.io/">Atom editor</a> and Firefox</p>
 
       <h2>B) Quick and Dirty:  HTML, CSS, SVG</h2>
       <div class="example">1) <a href="01-10-SVG-Circle-Rectangle.html">Creating a rectangle and a circle</a></div>
       <ul><li> View it using Firefox</li>
-        <li>Then open the code using Notepad (on a PC)</li></ul>
+        <li>Then open the code using Atom</li></ul>
 
        Key Concepts:
        <ul><li> Both HTML, which is used to create text, and SVG, which is used to create graphics, are just text with tags</li>
@@ -69,18 +70,21 @@
        <div class="yourTurn">Your Turn: Try changing color, spacing, see what happends  </div>
 
        <h3>Debugging Basics </h3>
+       <ul>
+         <li> "It's disappeared": if anything weird happens, or the screen goes blank, first thing you need to do is open up the debugger</li>
+         <li> How to start it: use the menus or press Ctrl+Shift+k</li>
+       </ul>
 
       <h2>D)  Simple Real-World Examples</h2>
 
-      <h3>1) Reading Data from a File: <a href="http://datachefs.github.io/a-taste-of-d3/01-basics/01-40-SIG-Status-Reading-Data-File.html">SIG Status</a></h3>
-        <p>NOTE:  because this D3 script reads a file, for security reasons it must be run on a server; if you try
-        running it just from your browser, you'll get an error message. It's not hard to run a tiny server on your desktop, but it takes some setup. So for the purpose of this class, the link above doesn't point to the filing your desktop, it points to the file on the class GitHub site. </p>
-        Key concepts:
-        <ul>
-          <li> Reading data from a file</li>
-          <li> Using conditional logic for color: we will get to play with it in the next example</li>
-          <li> Beginning to think about scalable solutions -- e.g., new data from a file each month </li>
+      <h3>1) Simple Clothing Sales <a href="01-40-Simple-Bar-Chart.html"> Bar Chart</a> (more complex data) </h3>
+      Key Concepts:
+      <ul>
+        <li> Data: array of objects</li>
+        <li> It's pretty, but took a lot of work and isn't close to being done -- needs legend, etc.
+          D3 gives you total control, but sometimes that's way more control than you want to have to spend time on </li>
         </ul>
+        <div class="yourTurn">Your Turn: switch from sales to purchases  </div>
 
       <h3>2) Creating an Abstract Map:  <a href="01-50-Abstract-Room-Scores.html">Team Room Scores</a> </h3>
         Key concepts:
@@ -90,14 +94,17 @@
         <div class="yourTurn">Your Turn:change the colors in the conditional logic</div>
         <div class="yourTurn">Your Turn: Try a different map  </div>
 
-        <h3>3) Simple Clothing Sales <a href="01-60-Simple-Bar-Chart.html"> Bar Chart</a> (more complex data) </h3>
-        Key Concepts:
-        <ul>
-          <li> Data: array of objects</li>
-          <li> It's pretty, but took a lot of work and isn't close to being done -- needs legend, etc.
-          D3 gives you total control, but sometimes that's way more control than you want to have to spend time on </li>
-        </ul>
-        <div class="yourTurn">Your Turn: switch from sales to purchases  </div>
+
+        <h2>E) Extra Credit</h2>
+        <h3>1) Reading Data from a File: <a href="http://datachefs.github.io/a-taste-of-d3/01-basics/01-90-SIG-Status-Reading-Data-File.html">SIG Status</a></h3>
+        <p>NOTE:  because this D3 script reads a file, for security reasons it must be run on a server; if you try
+          running it just from your browser, you'll get an error message. It's not hard to run a tiny server on your desktop, but it takes some setup. So for the purpose of this class, the link above doesn't point to the filing your desktop, it points to the file on the class GitHub site. </p>
+          Key concepts:
+          <ul>
+            <li> Reading data from a file</li>
+            <li> Using conditional logic for color: we will get to play with it in the next example</li>
+            <li> Beginning to think about scalable solutions -- e.g., new data from a file each month </li>
+          </ul>
     </div>  <!-- end main -->
   </div> <!-- end row -->
 </div>  <!-- end instructor -->
