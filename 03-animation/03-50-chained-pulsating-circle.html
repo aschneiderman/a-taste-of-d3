@@ -34,7 +34,8 @@ svg.append("circle")
 	.each(pulse);
 
 
-// Again, yeah, this is a weird way to handle creating an endless loop of transitions
+// Yeah, this is a weird way to handle creating an endless loop of transitions
+// The good news: in the new version of D3 that is coming soon, it's easier & less weird to do
 function pulse() {
 	var circle = svg.select("circle");
 

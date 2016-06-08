@@ -6,13 +6,10 @@
 </head>
 <body>
 <h1>Special Interest Group Member Engagement</h1>
-<h2>Final Version</h2>
 <svg width="960" height="400"></svg>        <!-- SVG graphics will go here  -->
 
 <script type="text/javascript">
 
-// Read in CSV file
-// conditional logic for color
 	var myData = [ 5, 10, 15, 20, 25, 5, 20, 10, 20, 5 ];
 
 	d3.select("svg").selectAll("circle")
@@ -22,16 +19,12 @@
 			.attr("cy", 200)
 			.attr("cx", function(d, i) { return i * 50 + 100; })
       .attr("r", function(d) { return d; })
-			.attr("fill", "white" )
+      .attr("fill", "purple")
+			.style("opacity", 0 )                    // 0 = transparent, so the circle isn't visible
       .transition()
-        .attr("fill", "purple")
+			.style("opacity", 1 )                    // 1 = opaque, so the circle is fully visible at the end of the transition
         .delay(function(d,i) {return i * 250})
-        .duration(1500);   // A small change --  a longer duration -- gives the animation a very different feel
-
-
-      // THINGS TO TRY
-      //  - What happens if you add some numbers to myData?  Or if you modify or delete some numbers?
-
+        .duration(1500);                       // A longer duration gives the animation a very different feel
 </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
 </head>
 <body>
-<h1>Animating Text: Ms Melissa Says</h1>
+<h1>Ms Melissa Says</h1>
 <svg width="900" height="900" id="selected_states" class="SVG_playground">
 
   // Picture of Melissa the cat, moved over to allow space for the text
@@ -27,9 +27,9 @@ melissaSays = ["Your quarterly performance numbers",
 "I've seen more thought", "and engagement",
 "from a pine nut."];
 
-var svg = d3.select("svg");
+var timing = 2000;
 
-var text = svg.selectAll("text")
+d3.select("svg").selectAll("text")
   .data(melissaSays)
   .enter()
   .append("text")
@@ -39,16 +39,13 @@ var text = svg.selectAll("text")
     .attr("font-family", "sans-serif")
     .attr("font-size", "36px")
     .style("fill", "Black")
-    .style("opacity", 0);
-
-var timing = 2000;
-
-  text.transition()
-    .delay( function(d,i) {return i * timing})
-    .duration(timing)
-    .attr("y", function(d,i)  { return i * 55 + 100})
-    .style("fill", "red")
-    .style("opacity", 1);
+    .style("opacity", 0)
+    .transition()
+      .delay( function(d,i) {return i * timing})
+      .duration(timing)
+      .attr("y", function(d,i)  { return i * 55 + 100})
+      .style("fill", "red")
+      .style("opacity", 1);
 </script>
 
 

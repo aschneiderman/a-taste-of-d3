@@ -38,7 +38,7 @@ var circleColors = d3.scale.linear()
 
 // Create the circles at their initial position and start the first transition
 svg.selectAll("circle")
-    .data(d3.range(numberOfCircles))     // Has an array of 0, 1, 2...
+    .data(d3.range(numberOfCircles))     // Creates an array of 0, 1, 2... up to numberOfCircles - 1
   .enter().append("circle")
     .attr("r", circleRadius)
     .attr("cx", 0)

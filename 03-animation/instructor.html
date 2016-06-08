@@ -20,24 +20,69 @@
   </div>  <!-- end sidebar -->
 </div> <!-- end row -->
 
+<div class="instructor">
 <div class="row">
   <div class="main">
     <h2>Basic Transitions</h2>
-    <ul><li> Changing one feature: making a rectangle <a href="03-10-Rectangle-Move.html">  move</a></li>
-      <li> Changing several features: changing a rectangle's  <a href="03-12-Rectangle-Color.html"> location and color</a></li>
-      <li> Data into circles: <a href="03-20-Data-Into-Circles-Delay.html">delay</a></li>
-      <li> Data into circles:  <a href="03-22-Data-Into-Circles-Delay-Duration.html">duration</a></li>
-      <li> Animating text:   <a href="03-30-Text-Ms-Melissa.html">Ms. Melissa's Dash-Your-Hopes Board</a></li>
-    </ul>
+    <p> Changing one feature: making a rectangle <a href="03-10-Rectangle-Move.html">move</a></p>
+      Key Concepts:
+      <ul>
+        <li> Although you can do D3 animations by telling D3 exactly what to do -- see "using a timer" below --
+          most D3 animations are created as "transitions", where you tell D3 the starting and stopping state of an object</li>
+        <li> Adding a transition is easy: all you need to do is use ".transition()"
+        and then whatever attributes you want to transition to</li>
+        <li> d3 does all the heavy lifting, figuring out how to make the transition from one state to the other.
+        In this example, rectangle by telling D3 that the rectangle starts at a particular position and that after the transition it should have an "X" of 320</li>
+        <li>You can change how long the transition takes by using the "duration" function to tell D3 how many milliseconds the transition should take (by default, 250 ms)</li>
+        <li> Now you try: try changing the X and the duration and see what happens</li>
+      </ul>
+
+      <p> Changing several features: changing a rectangle's  <a href="03-12-Rectangle-Color.html"> location and color</a></p>
+      Key Concepts:
+      <ul>
+         <li> Making several transitions is easy: just add whatever attributes/style changes you want after the "transition" function</li>
+      </ul>
+
+      <p> Data into circles:  <a href="03-22-Data-Into-Circles-Delay-Duration.html">duration</a></p>
+      Key Concepts:
+      <ul>
+        <li> "duration" tells D3 how long the transition should take; "delay" tells D3 when the transition should start.</li>
+        <li> NOTE: one of the initially confusing things about D3 animation is that unless you tell objects otherwise, every object's animation starts at the same time. You might think that if you create 3 sets of objects, the object you create later in the script would run later, but that's not the case. When the animation occurs depends strictly on an object's delay</li>
+        <li> Just as we can use data to create a bunch of objects, we can use the data to animate each of these objects a little differently. Here we calculate each object's delay using its index -- "i" -- which essentially tells D3 to make the objects appear one after the other</li></li>
+        <li> Now you try: try changing the values and see what happens</li>
+      </ul>
+
+      <p> Animating text:   <a href="03-30-Text-Ms-Melissa.html">Ms. Melissa's Dash-Your-Hopes Board</a></p>
+      Key Concepts:
+      <ul>
+        <li>The picture of Melissa the cat is created using hardcoded SVG commands plus the "Translate" function to move the picture to the right</li>
+        <li>Instead of using a list/array of numbers to create a bunch of circles, here we use a list/array of text to put text on the screen that we will animate</li>
+        <li> Now you try: try changing the values and see what happens</li>
+      </ul>
 
     <h2>Animation Loops: Chained Transitions </h2>
-      <ul>
-        <li> <a href="03-50-chained-pulsating-circle.html">Pulsating circle</a></li>
-        <li> <a href="03-55-chained-transitions-circles.html">Circle chain</a></li>
-      </ul>
+        <p> <a href="03-50-chained-pulsating-circle.html">Pulsating circle</a></p>
+        Key Concepts:
+        <ul>
+          <li> Transitions are great if you want an event to happen once. But what if you want to repeat the animation? One way to do it: "chained transitions"</li>
+          <li>Yes, the code for chained transitions looks weird -- as we say in A Taste of D3, "don't sweat it!"</li>
+          <li> To create a chained transition, use the "each" function to tells D3 to call a function once the transition is complete. Then use a "each" function at the end of that function to call the function again</li>
+          <li> Now you try: try changing the values and see what happens</li>
+        </ul>
+
+        <p> <a href="03-55-chained-transitions-circles.html">Circle chain</a></p>
+        Key Concepts:
+        <ul>
+          <li>Since we don't want all the circles to have the same color, we can use one of D3's built-in functions -- "scale.linear" -- to create an array of colors that start with one color and gradually change to the final color</li>
+          <li> Unlike previous visualizations, in this one we don't create an array of data in advance. Instead we use the "range" function to create an array of numbers from 0 to numberOfCircles - 1 on-the-fly</li>
+          <li>This animation uses the same "chained transition" trick as the previous one. How does it get the circles to look as if they are following each other? By a clever use of the "delay" function (Go Mike Bostock!)</li>
+          <li> You've already seen all of the individual ideas that are in the script
+          <li>Although previous scripts have used all of the ideas you see in the script, it isn't immediately obvious why they produce an effect that looks almost like a living breathing creature. To really understand how it works, try tweaking each of the parameters and see what effect it has.</li>
+        </ul>
 
 
     <h2>Extra Credit</h2>
+    <p> NOTE: we probably won't have time to get to these in the class. Briefly go through them without looking at the code, just to give students an idea of what else you can do. Students with a little more time during the week can go check them out and play with them to see how they work.</p>
     <ul>
       <li> Animation Loops: <a href="03-70-timer-point-along-line.html">Using a Timer</a></li>
       <li> Chained transitions using attrTween: <a href="03-73-chained-attrTween-path.html">moving along a curvy path</a></li>
@@ -45,5 +90,6 @@
     </ul>
   </div>  <!-- end main -->
 </div> <!-- end row -->
+</div>  <!-- end instructor -->
 </body>
 </html>
