@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Org Chart</title>
+  <script src="../d3.v4.min.js"></script>         <!-- Load the d3 library -->
+  <link href="../taste.css" rel="stylesheet" media="screen">      <!-- Taste of D3's CSS; you can get rid of it in your version -->
+  <title>Circle Packing</title>
+	<style>
+  body {
+	  font-family: sans-serif;
+  }
+	circle {
+	  fill: Purple;
+	  fill-opacity: .5;
+	  stroke: Gray;
+	  stroke-width: 1px;
+	}
+	text {
+		text-anchor: middle;
+	}
+
+	.leaf circle {
+	  fill: AntiqueWhite;
+	  fill-opacity: 1;
+	}
+  .leaf text {
+    font-size: 20px;
+  }
+	</style>
+</head>
+<body>
+	<h1>Circle Packing: Produce Popularity</h1>
+  <br/>
+  <script type="text/javascript">
+// Create the data
+var produce = {
+	name: "produce",
+	children: [
+		{ name: "Fruit",
+			children: [
+        { name: "Berries",
+        children: [
+          {name: "Raspberries", quantity: 100},
+          {name: "Strawberries", quantity: 200},
+          {name: "Blueberries", quantity: 80}
+        ] },
+				{name: "Apple", quantity: 300},
+				{name: "Banana", quantity: 200},
+			] },
+		{ name: "Veggies",
+			children:  [
+				{name: "Zucchini", quantity: 52},
+				{name: "Peas", quantity: 30},
+				{name: "Carrots", quantity: 60},
+        {name: "Onions", quantity: 70}
+			] }
+] };
+
+var diameter = 860;
+
+// Create the SVG area
+var svg = d3.select("body").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter);
+
+// Create a packed layout function and use it to do the calculations to turn produce into a packed layout
+var packedLayout = d3.pack()
+    .size([diameter, diameter])
+    .value(function(d) { return d.quantity; });
+var packedNodes = packedLayout.nodes(produce);
+
+// Uncomment these lines to dump out the layout data in  the browser console
+// console.log(packedNodes);
+// packedNodes.forEach(function(d, i) { console.log(i + ") " + d.name + ":  x: " + Math.round(d.x)
+//             + ",  y:" + Math.round(d.y) + ", r: " + Math.round(d.r)); });
+
+
+// For each item, add a group to hold the circle and the text
+var nodes = svg.selectAll("g")
+    .data(packedNodes)
+    .enter().append("g")
+    	.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+    	.attr("class", function(d) { return d.children ? "node" : "leaf"; });
+
+// For each group, add a circle
+nodes.append("circle")
+    .attr("r", function(d) { return d.r; });
+
+//For each group: if it doesn't have children, add a text label
+nodes.filter(function(d) { return !d.children; })
+  .append("text")
+    .text(function(d) { return d.name; });
+</script>
+
+<br/><p>&nbsp;</p>
+<p> Based on Mike Bostock's  <a href="http://bl.ocks.org/mbostock/4063530">http://bl.ocks.org/mbostock/4063530</a>,
+mostly tweaked to make it easier for beginners to understand.</p> <br/>
+</body>
+</html>
